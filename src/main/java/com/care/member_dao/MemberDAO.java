@@ -3,20 +3,25 @@ package com.care.member_dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.care.member_dto.MemberDTO;
-import com.care.template.Constant;
 
+@Repository
 public class MemberDAO {
 	
-	private JdbcTemplate template;
 	
-	public MemberDAO() {
-		this.template = Constant.template;
-		
-	}
+	
+	
+	@Autowired
+	private SqlSession sqlSession;
+	public static final String namespace="com.care.mybatis.myMapper";
+	
+	
 	
 	public ArrayList<MemberDTO> login(String id,String pw) {
 		String sql = "select * from member02";

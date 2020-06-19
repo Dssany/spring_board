@@ -2,6 +2,8 @@ package com.care.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -13,24 +15,12 @@ import com.care.member_service.MemberContentServiceImpl;
 import com.care.member_service.MemberLoginImpl;
 import com.care.member_service.MemberSelectImpl;
 import com.care.member_service.MemberService;
-import com.care.template.Constant;
 
 @Controller
 public class MemberController {
-	
-	public MemberController() {
-		String config = "classpath:applicationJDBC.xml";
-		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext(config);
-		JdbcTemplate template = ctx.getBean("template",JdbcTemplate.class);//template.xml 객체를 생성해서 저장
-		Constant.template = template;//스태틱 변수에저장
-		System.out.println("====멤버 컨트롤러 실행 ====");
-	}
-	
-	
+	@Autowired
+	@Qualifier("memberLoginImpl")
 	private MemberService jdbc;
-	
-	
-	
 	
 	@RequestMapping("index")
 	public String index() {
@@ -47,7 +37,6 @@ public class MemberController {
 	@RequestMapping("loginchk")
 	public String loginchk(Model model,HttpServletRequest request) {
 		model.addAttribute("request",request);
-		jdbc = new MemberLoginImpl();
 		jdbc.execute(model);
 		
 		return "member/sessionchk";
@@ -67,7 +56,7 @@ public class MemberController {
 	
 	@RequestMapping("memberInfo")
 	public String memberInfo(Model model) {
-		jdbc = new MemberContentServiceImpl();
+		jdbc = (MemberService)AC.ac.getBean("memberContentServiceImpl");
 		jdbc.execute(model);
 		
 		
@@ -77,7 +66,7 @@ public class MemberController {
 	@RequestMapping("select")
 	public String selectid(@RequestParam String id,Model model) {
 		model.addAttribute("id",id);
-		jdbc = new MemberSelectImpl();
+		jdbc = (MemberService)AC.ac.getBean("memberSelectImpl");
 		jdbc.execute(model);
 		return "member/selectInfo";
 	}
