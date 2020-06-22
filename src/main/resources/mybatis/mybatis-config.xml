@@ -6,5 +6,6 @@
 <configuration>
    <typeAliases>
 		<typeAlias alias="dto" type="com.care.member_dto.MemberDTO"/>
+		<typeAlias alias="boarddto" type="com.care.board_dto.BoardDTO"/>
    </typeAliases>
 </configuration>

@@ -5,15 +5,29 @@
 <mapper namespace="com.care.mybatis.myMapper"><!-- 이름은 아무거나 지정해도된다 -->
 <!-- com.care.mybatis.myMapper.listAll 경로,,-->
 	<select id="listAll" resultType="dto">
-		select * from mybatis_test
+		select * from member02
 	</select>
 	<select id="list" resultType="com.care.member_dto.MemberDTO">
-		select * from mybatis_test where num=#{num}
+		select * from member02 where id=#{id}
 	</select>
+<!-- 	<select id="log" resultType="logdto"> -->
+<!-- 		select * from userlog -->
+<!-- 	</select> -->
+	<select id="boardlist" resultType="boarddto">
+		select * from mvc_board
+	</select>
+	
 	<insert id="save">
-		insert into mybatis_test (num,name,mydate) values(#{num},#{name},#{mydate})
+		insert into member_02 (num,name,mydate) values(#{num},#{name},#{mydate})
 	</insert>
+	
+	<insert id="logsave">
+		insert into userlog values(#{num},#{id},#{starttime},#{endtime},#{resulttime})
+	</insert>
+	
+	
+	
 	<update id="updatedata">
-		update mybatis_test set name=#{name},mydate=#{mydate} where num=#{num}
+		update member_02 set name=#{name},mydate=#{mydate} where num=#{num}
 	</update>
 </mapper>

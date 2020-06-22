@@ -8,16 +8,19 @@ import org.springframework.ui.Model;
 
 import com.care.member_dao.MemberDAO;
 import com.care.member_dto.MemberDTO;
+
 @Service
-public class MemberContentServiceImpl implements MemberService{
-	
+public class MemberlogImpl implements MemberService{
+
 	@Autowired
 	private MemberDAO dao;
 	
 	@Override
 	public void execute(Model model) {
-		List<MemberDTO> list = dao.list();
-		model.addAttribute("list",list);
+		
+		
+//		List<MemberDTO> log = dao.log();
+		model.addAttribute("log",log);
+		
 	}
-	
 }

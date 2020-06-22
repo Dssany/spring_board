@@ -20,7 +20,6 @@ public class MemberSelectImpl implements MemberService{
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		String id = (String)map.get("id");
-		MemberDAO dao = new MemberDAO();
 		
 		model.addAttribute("select",dao.select(id));
 		

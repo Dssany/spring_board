@@ -1,10 +1,13 @@
 package com.care.member_service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -24,11 +27,13 @@ public class MemberLoginImpl implements MemberService {
 		HttpServletRequest re = (HttpServletRequest)map.get("request");
 		String id = re.getParameter("id");
 		String pw = re.getParameter("pw");
-		MemberDAO dao = new MemberDAO();
-		ArrayList<MemberDTO> list = dao.list();
+		List<MemberDTO> list = dao.list();
 		model.addAttribute("list",list);
 		
 
 	}
+	
+	
+	
 
 }

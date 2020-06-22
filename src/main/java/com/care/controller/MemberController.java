@@ -1,7 +1,11 @@
 package com.care.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -11,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.care.member_dto.MemberDTO;
+import com.care.member_dto.MemberLogDTO;
 import com.care.member_service.MemberContentServiceImpl;
 import com.care.member_service.MemberLoginImpl;
 import com.care.member_service.MemberSelectImpl;
@@ -21,6 +27,8 @@ public class MemberController {
 	@Autowired
 	@Qualifier("memberLoginImpl")
 	private MemberService jdbc;
+	
+	
 	
 	@RequestMapping("index")
 	public String index() {
@@ -43,7 +51,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("resultlogin")
-	public String loginre() {
+	public String loginre(){
 		return "member/successLogin";
 	}
 	
@@ -69,6 +77,13 @@ public class MemberController {
 		jdbc = (MemberService)AC.ac.getBean("memberSelectImpl");
 		jdbc.execute(model);
 		return "member/selectInfo";
+	}
+	
+	@RequestMapping("log")
+	public String log(Model model) {
+		jdbc = (MemberService)AC.ac.getBean("memberlogImpl");
+		jdbc.execute(model);
+		return "member/logpage";
 	}
 	
 }

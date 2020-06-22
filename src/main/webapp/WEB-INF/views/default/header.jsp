@@ -18,14 +18,19 @@
 		<c:when test="${sessionScope.id ne null }">
 		<div style="text-align:right;padding-right: 20px;">
 		<a href="index">HOME</a>&nbsp;&nbsp;&nbsp;
+		<a href="board">게시판</a>&nbsp;&nbsp;&nbsp;
 		<a href="memberInfo">회원정보</a>&nbsp;&nbsp;&nbsp;
+		<a href="log">로그보기</a>&nbsp;&nbsp;&nbsp;
+		
 		<a href="logout">로그아웃</a>
 		</div>
 		</c:when>
 		<c:otherwise>
 		<div style="text-align:right;padding-right: 20px;">
 		<a href="index">HOME</a>&nbsp;&nbsp;&nbsp;
+		<a href="#">게시판</a>&nbsp;&nbsp;&nbsp;
 		<a href="#">회원정보</a>&nbsp;&nbsp;&nbsp;
+		<a href="#">로그보기</a>&nbsp;&nbsp;&nbsp;
 		<a href="loginpage">로그인</a>
 		</div>
 		</c:otherwise>
