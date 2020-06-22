@@ -19,4 +19,8 @@ public class BoardDAO {
 	public List<BoardDTO> list(){
 		return sqlSession.selectList(namespace + ".boardlist");
 	}
+	
+	public int insert() {
+		return sqlSession.insert(namespace + ".boardinsert");
+	}
 }

@@ -7,27 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>게시글 등록<br>
-	<table border="1">
-		<tr>
-			<th>이름</th><input type="text" name="name">
-		</tr>
-			
-		<tr>
-			<th>제목</th><input type="text" name="title">
-		</tr>
-			<th>내용</th><text-area name="content"></text-area>
-		<tr>
-		
-		</tr>
-		
-		<tr>
-		
-		</tr>
-		
+<form action="insert">
+	<table border="1" align="center">
 	
-	
-	
+		<tr>
+			<th>이름</th><th><input type="text" name="name"></th>
+		</tr>
+		<tr>
+			<th>제목</th><th><input type="text" name="title"></th>
+		</tr>
+			<th>내용</th><th><textarea name="content" style="width:300px;height:400px;"></textarea></th>
+		<tr>
+		</tr>
+			<th><input type="submit" value="저장" ></th>
+		
+		<tr>
+		
+		</tr>
 	</table>
-	
+		</form>
 </body>
 </html>

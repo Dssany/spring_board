@@ -52,6 +52,7 @@ public class MemberController {
 	
 	@RequestMapping("resultlogin")
 	public String loginre(){
+		System.out.println("로그인은되니?");
 		return "member/successLogin";
 	}
 	

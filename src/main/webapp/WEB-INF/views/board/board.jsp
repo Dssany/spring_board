@@ -35,7 +35,7 @@
 			<th>${board.indent }</th>
 		</tr>
 		<tr>
-			<th><a href="boardinsert">글 작성</a></th>
+			<th><a href="boardpage">글 작성</a></th>
 		</tr>
 	</c:forEach>
 

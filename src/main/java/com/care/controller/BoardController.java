@@ -1,5 +1,7 @@
 package com.care.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,10 +25,17 @@ public class BoardController {
 		return "board/board";
 	}
 	
-	@RequestMapping("boardinsert")
-	public String insert(Model model) {
+	@RequestMapping("boardpage")
+	public String insertpage(Model model) {
+		
+		return "board/insertpage";
+	}
+	
+	@RequestMapping("insert")
+	public String insert(Model model,HttpServletRequest request) {
+		model.addAttribute("request",request);
 		bs = (BoardService)AC.ac.getBean("boardinsertImpl");
 		bs.execute(model);
-		return "board/insert";
+		return "board/board";
 	}
 }
