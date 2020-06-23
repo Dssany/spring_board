@@ -14,10 +14,10 @@
 	</header>
 	<main>
 		<c:choose>
-			<c:when test="${sessionScope.re eq 1}">
+			<c:when test="${chk eq '1'}">
 				<h1 >로그인 성공</h1>
 			</c:when>
-			<c:when test="${sessionScope.re eq 2}">
+			<c:when test="${chk eq '0'}">
 				<h1>비밀번호 불일치</h1>
 			</c:when>
 			<c:otherwise>

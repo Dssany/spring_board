@@ -2,8 +2,10 @@ package com.care.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +45,19 @@ public class MemberController {
 	
 	
 	@RequestMapping("loginchk")
-	public String loginchk(Model model,HttpServletRequest request) {
+	public String loginchk(Model model,HttpServletRequest request,HttpSession session) {
 		model.addAttribute("request",request);
+		model.addAttribute("session",session);
 		jdbc.execute(model);
+		
 		
 		return "member/sessionchk";
 	}
 	
 	@RequestMapping("resultlogin")
-	public String loginre(){
-		System.out.println("로그인은되니?");
+	public String loginre(Model model,HttpServletRequest request){
+		String num = request.getParameter("re");
+		model.addAttribute("chk",num);
 		return "member/successLogin";
 	}
 	

@@ -21,8 +21,8 @@
 		insert into member_02 (num,name,mydate) values(#{num},#{name},#{mydate})
 	</insert>
 	<insert id="boardinsert">
-		insert into mvc_board (id,name,title,content,hit,idgroup,step,indent)
-		values(mvc_board_seq.nextval,#{name},#{title},#{content},0,mvc_board_seq.currval,0,0)
+		insert into mvc_board (id,name,title,content,idgroup)
+		values(mvc_board_seq.nextval,#{name},#{title},#{content},mvc_board_seq.currval)
 	</insert>
 	<insert id="logsave">
 		insert into userlog values(#{num},#{id},#{starttime},#{endtime},#{resulttime})
