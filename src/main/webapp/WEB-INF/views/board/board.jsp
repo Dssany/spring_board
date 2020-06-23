@@ -34,10 +34,11 @@
 			<th>${board.step }</th>
 			<th>${board.indent }</th>
 		</tr>
+		</c:forEach>
 		<tr>
 			<th><a href="boardpage">글 작성</a></th>
 		</tr>
-	</c:forEach>
+	
 
 </table>	
 </main>
